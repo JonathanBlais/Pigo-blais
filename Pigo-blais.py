@@ -5,8 +5,12 @@ __author__ = 'Jo'
 
 class Pigo:
 
-    isMoving = False
-    servoPos = 90
+    ########
+    ######## BASIC STATUS AND METHODS
+    ########
+
+    status = {"ismoving": False, "servo": 90, "leftspeed": 175,
+              "rightspeed": 175}
 
     def __init__(self):
         print "I'm such a robot. beep. beep."
@@ -23,6 +27,14 @@ class Pigo:
             time.sleep(.1)
             print "Sorry boss, can't seem to get moving"
 
+
+    ########
+    ######## ADVANCED METHODS
+    ########
+
+########
+######## MAIN APP STARTS HERE
+########
 
 stamkos = Pigo()
 stamkos.fwd()
