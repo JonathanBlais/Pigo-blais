@@ -1,3 +1,6 @@
+#GOPIGO AUTONOMOUS, INSTANTIATED CLASS
+#GOPIGO API: http://www.dexterindustries.com/GoPiGo/programming/python-programming-for-the-raspberry-pi-gopigo/
+
 from gopigo import *
 import time
 
@@ -35,8 +38,14 @@ class Pigo:
         for x in range(3):
             bwd()
 
+
+    #Check if conditions are safe to continue operating
     def keepGoing(self):
         if self.status['dist'] < STOP_DIST:
+            print "Obstacle detected. Stopping."
+            return False
+        elif volt() > 14 or volt() < 6:
+            print "Unsafe voltage detected: " + str(volt())
             return False
         else:
             return True
