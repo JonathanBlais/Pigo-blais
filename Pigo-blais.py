@@ -58,6 +58,39 @@ class Pigo:
             print "EMERGENCY STOP FROM THE CHECK DISTANCE"
             self.stop()
 
+    def circleRight(self):
+        for x in range(5):
+            right_rot()
+        time.sleep(.5)
+        self.stop()
+
+    def circleLeft(self):
+        for x in range(5):
+            left_rot()
+        time.sleep(.5)
+        self.stop()
+
+    def blink(self):
+        for x in range(5):
+            led_on(right,left)
+            led_off(right,left)
+        time.sleep(.5)
+        self.stop()
+
+    def shuffle(self):
+        for x in range(5):
+            left_rot()
+            right_rot()
+        time.sleep(.5)
+        self.stop()
+
+    def servoShake(self):
+        for x in range(5):
+            servo(135)
+            time.sleep(.1)
+            servo(45)
+        time.sleep(.5)
+        self.stop()
 
 ########
 ######## ADVANCED METHODS
