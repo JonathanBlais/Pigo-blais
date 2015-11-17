@@ -59,9 +59,21 @@ class Pigo:
             self.stop()
 
 
-    ########
-    ######## ADVANCED METHODS
-    ########
+########
+######## ADVANCED METHODS
+########
+
+
+    def safeDrive(self):
+        self.fwd()
+        while self.keepGoing():
+            self.checkDist()
+        self.stop()
+
+    def servoSweep(self):
+        for ang in range(20, 160, 5):
+            servo(ang)
+            time.sleep(.1)
 
     def dance(self):
         print "I just want to DANCE!"
