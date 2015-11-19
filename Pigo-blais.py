@@ -20,23 +20,7 @@ class Pigo:
         print "I'm such a robot. beep. beep."
         self.checkDist()
 
-    def stop(self):
-        self.status["ismoving"] = False
-        print "Whoaaaa there."
-        for x in range(3):
-            stop()
 
-    def fwd(self):
-        self.status["ismoving"] = True
-        print "Let's get going!"
-        for x in range(3):
-            fwd()
-
-    def bwd(self):
-        self.status["ismoving"] = True
-        print "Back, back it up!"
-        for x in range(3):
-            bwd()
 
 
     #Check if conditions are safe to continue operating
