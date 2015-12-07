@@ -60,43 +60,55 @@ class Pigo():
             self.stop()
 
 
-    def turnTo(self):
-        print "looking for other options"
+    def isTherePath(self):
+        print "Is there any path?"
         counter=0
         for ang in range(20,160,3):
-            if vision[ang]>MIN_DISTANCE:
+            if self.vision[ang] > self.MIN_DISTANCE:
                 counter+=1
             else:
                 print "let's restart"
                 counter=0
             if counter == 10:
                 print "found an option"
-                return ang
-            if ang<90 and self.turned_right_last == False:
-                enable_encoders()
-                enc_tgt(1,1,ang/15)
-                right_rot()
-                self.turned_right_last = True
-                time.sleep(1)
-                safeDrive(self)
-                print "right " + str(ang)
-            else:
-                print "let's restart"
-                counter=0
-            if ang>90 and self.turned_right_last == True:
-                enable_encoders()
-                enc_tgt(1,1,ang/15)
-                left_rot()
-                self.turned_right_last = False
-                time.sleep(1)
-                safeDrive(self)
-                print "left " + str(ang)
-            else:
-                print "let's restart"
-                counter=0
-            elif:
-                print "Bitch please I am trying"
-                turnRound(self)
+                return True
+        return False
+
+
+
+
+    #TAKES AN ANGLE PARAMETER AND TURNS TOWARD THAT
+    def turnTo(self, angle):
+
+
+    #self.sweep is analyzed to see how many options there are and whats the smartest
+    def findAngle(self):
+
+        if ang<90 and self.turned_right_last == False:
+            enable_encoders()
+            enc_tgt(1,1,ang/15)
+            right_rot()
+            self.turned_right_last = True
+            time.sleep(1)
+            safeDrive(self)
+            print "right " + str(ang)
+        else:
+            print "let's restart"
+            counter=0
+        if ang>90 and self.turned_right_last == True:
+            enable_encoders()
+            enc_tgt(1,1,ang/15)
+            left_rot()
+            self.turned_right_last = False
+            time.sleep(1)
+            safeDrive(self)
+            print "left " + str(ang)
+        else:
+            print "let's restart"
+            counter=0
+        elif:
+            print "B*tch please I am trying"
+            turnRound(self)
 
     def turnRound(self):
         print "no option in current view"
@@ -119,14 +131,15 @@ class Pigo():
 
 
 
-
+tina = Pigo()
 
 while True :
-    if tina.checkDist
+    if tina.servoSweep():
         tina.safeDrive()
     else:
-        tina.servoSweep()
         if tina.isTherePath():
             tina.turnTo(tina.findAngle())
         else:
             tina.turnRound()
+
+tina.stop()
