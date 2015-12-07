@@ -63,7 +63,7 @@ class Pigo():
     def turnTo(self):
         print "looking for other options"
         counter=0
-        for ang in range(20,160,3)
+        for ang in range(20,160,3):
             if vision[ang]>MIN_DISTANCE:
                 counter+=1
             else:
