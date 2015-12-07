@@ -9,9 +9,13 @@ class Pigo():
     sweep = [0] * 180
     FARDISTANCE = 90
     MIN_DISTANCE = 60
+    turned_right_last = True
 
     status = {"ismoving" : False, "servo" : 90, "leftspeed" : 175,
               "rightspeed" : 175, "dist" : 100, "volt" : 2}
+
+    def __init__(self):
+        print "I'm alive"
 
     def fwd(self):
         self.status["ismoving"] = True
@@ -55,6 +59,64 @@ class Pigo():
             self.stop()
 
 
+    def turnTo(self):
+        print "looking for other options"
+        counter=0
+        for ang in range(20,160,3)
+            if vision[ang]>MIN_DISTANCE:
+                counter+=1
+            else:
+                print "let's restart"
+                counter=0
+            if counter == 10:
+                print "found an option"
+                return ang
+            if ang<90 and self.turned_right_last == False:
+                enable_encoders()
+                enc_tgt(1,1,ang/15)
+                right_rot()
+                self.turned_right_last = True
+                time.sleep(1)
+                safeDrive(self)
+                print "right " + str(ang)
+            else:
+                print "let's restart"
+                counter=0
+            if ang>90 and self.turned_right_last == True:
+                enable_encoders()
+                enc_tgt(1,1,ang/15)
+                left_rot()
+                self.turned_right_last = False
+                time.sleep(1)
+                safeDrive(self)
+                print "left " + str(ang)
+            else:
+                print "let's restart"
+                counter=0
+            elif:
+                print "Bitch please I am trying"
+                turnRound(self)
+
+    def turnRound(self):
+        print "no option in current view"
+        if self.turned_right_last == True:
+            enable_encoders()
+            enc_tgt(1,1,9)
+            left_rot()
+            self.turned_right_last = False
+            time.sleep(1)
+            safeDrive(self)
+            print "no options must turn 90 degrees to the left"
+        elif:
+            enable_encoders()
+            enc_tgt(1,1,9)
+            right_rot()
+            self.turned_right_last = True
+            time.sleep(1)
+            safeDrive(self)
+            print "no options must turn 90 degrees to the right"
+
+
 
 
 
@@ -64,6 +126,6 @@ while True :
     else:
         tina.servoSweep()
         if tina.isTherePath():
-            tina.turnto(tina.findAngle())
+            tina.turnTo(tina.findAngle())
         else:
-            tina.turnAround()
+            tina.turnRound()
