@@ -5,7 +5,7 @@ from gopigo import *
 import time
 
 
-class Pigo:
+class Pigo():
 
     sweep = [0] * 180
     FARDISTANCE = 90
@@ -34,20 +34,20 @@ class Pigo:
 
     def checkDist(self):
         servo(90)
-            time.sleep(1)
-            dist = us_dist(15)
-            if dist > MIN_DISTANCE:
-                print('Forward is fine with me', dist)
-                return True
-            else:
-                return False
+        time.sleep(1)
+        self.status['dist'] = us_dist(15)
+        if dist > MIN_DISTANCE:
+            print('Forward is fine with me', dist)
+            return True
+        else:
+            return False
 
 
 
     def safeDrive(self):
         self.fwd()
         counter = 0
-        while self.checkDist():
+        while self.checkDist:
             if counter % 10:
                 print "driving safe!"
             counter += 1
@@ -122,7 +122,7 @@ class Pigo:
 
 
 while True :
-    if tina.checkDist()
+    if tina.checkDist
         tina.safeDrive()
     else:
         tina.servoSweep()
