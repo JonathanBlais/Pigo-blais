@@ -2,9 +2,10 @@ __author__ = 'Jo'
 
 
 from gopigo import *
+import time
 
 
-class Pigo():
+class Pigo:
 
     sweep = [0] * 180
     FARDISTANCE = 90
