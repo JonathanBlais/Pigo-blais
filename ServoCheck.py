@@ -84,15 +84,15 @@ class Pigo():
             print "We're going to need a big turn"
             turntime = BIGTURN
         if angle < 90:
-        print "Turning right"
-        self.right_rot()
-            time.sleep(turntime)
-        self.stop()
+            print "Turning right"
+            self.right_rot()
+                time.sleep(turntime)
+            self.stop()
         else:
-        print "Turning left"
-        self.left_rot()
-            time.sleep(turntime)
-        self.stop()
+            print "Turning left"
+            self.left_rot()
+                time.sleep(turntime)
+            self.stop()
 
 
 
