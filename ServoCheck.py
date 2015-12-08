@@ -14,6 +14,7 @@ class Pigo():
 
     status = {"ismoving" : False, "servo" : 90, "leftspeed" : 175,
               "rightspeed" : 175, "dist" : 100, "volt" : 2}
+    vision = [None] * 180
 
     def __init__(self):
         print "I'm alive"
