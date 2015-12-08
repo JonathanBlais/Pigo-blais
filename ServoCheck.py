@@ -25,13 +25,17 @@ class Pigo():
         for x in range(3):
             self.fwd()
 
+    def keepGoing(self):
+        if self.status['dist'] < STOP_DIST:
+            print "Obstacle detected. Stopping."
+            return False
+        elif volt() > 14 or volt() < 6:
+            print "Unsafe voltage detected: " + str(volt())
+            return False
+        else:
+            return True
 
-    def servoSweep(self):
-        enable_servo()
-        for ang in range(20,160,3):
-            servo(ang)
-            time.sleep(.1)
-            self.sweep[ang] = us_dist(15)
+
 
     def checkDist(self):
         servo(90)
@@ -141,7 +145,7 @@ class Pigo():
 tina = Pigo()
 
 while True :
-    if tina.servoSweep():
+    if tina.keepGoing():
         tina.safeDrive()
     else:
         if tina.isTherePath():
