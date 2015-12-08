@@ -26,7 +26,7 @@ class Pigo():
         self.status["ismoving"] = True
         print "lets a go"
         for x in range(3):
-            self.fwd()
+            fwd()
 
     def keepGoing(self):
         if self.status['dist'] < STOP_DIST:
