@@ -77,11 +77,25 @@ class Pigo():
 
 
 
-    #TAKES AN ANGLE PARAMETER AND TURNS TOWARD THAT
     def turnTo(self, angle):
+        turntime = .2
+        BIGTURN = .5
+        if angle < 50 or angle > 120:
+            print "We're going to need a big turn"
+            turntime = BIGTURN
+        if angle < 90:
+        print "Turning right"
+        self.rightrot()
+            time.sleep(turntime)
+        self.stop()
+        else:
+        print "Turning left"
+        self.leftrot()
+            time.sleep(turntime)
+        self.stop()
 
 
-    #self.sweep is analyzed to see how many options there are and whats the smartest
+
     def findAngle(self):
 
         if ang<90 and self.turned_right_last == False:
@@ -92,10 +106,7 @@ class Pigo():
             time.sleep(1)
             safeDrive(self)
             print "right " + str(ang)
-        else:
-            print "let's restart"
-            counter=0
-        if ang>90 and self.turned_right_last == True:
+        elif ang>90 and self.turned_right_last == True:
             enable_encoders()
             enc_tgt(1,1,ang/15)
             left_rot()
@@ -103,12 +114,7 @@ class Pigo():
             time.sleep(1)
             safeDrive(self)
             print "left " + str(ang)
-        else:
-            print "let's restart"
-            counter=0
-        elif:
-            print "B*tch please I am trying"
-            turnRound(self)
+
 
     def turnRound(self):
         print "no option in current view"
