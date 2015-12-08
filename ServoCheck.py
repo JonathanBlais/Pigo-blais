@@ -126,7 +126,7 @@ class Pigo():
             time.sleep(1)
             safeDrive(self)
             print "no options must turn 90 degrees to the left"
-        elif:
+        else:
             enable_encoders()
             enc_tgt(1,1,9)
             right_rot()
