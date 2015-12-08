@@ -4,6 +4,8 @@ __author__ = 'Jo'
 from gopigo import *
 import time
 
+STOP_DIST = 50
+
 
 class Pigo():
 
@@ -11,7 +13,7 @@ class Pigo():
     FARDISTANCE = 90
     MIN_DISTANCE = 60
     turned_right_last = True
-    STOP_DIST = 50
+
 
     status = {"ismoving" : False, "servo" : 90, "leftspeed" : 175,
               "rightspeed" : 175, "dist" : 100, "volt" : 2}
